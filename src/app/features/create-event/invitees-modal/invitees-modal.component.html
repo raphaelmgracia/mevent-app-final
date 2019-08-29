@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+        My Event App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngFor= "let invitee of inviteeList">
+        
+        <ion-item (click)="addInvitee(invitee)">
+          <ion-label> {{invitee.name}}</ion-label>
+          <ion-checkbox slot="end" [(ngModel)]="invitee.isChecked"></ion-checkbox>
+          
+        </ion-item>
+      </ion-list>
+      
+</ion-content>
+
+
+
+<ion-button margin (click)="this.dismissModal(inviteeList)">Add participants</ion-button>

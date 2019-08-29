@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create a new event</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup] = "eventData" >
+    
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">Event name<ion-text color="danger">*</ion-text>
+  
+        </ion-label>
+        <ion-input required placeholder="Event name" type="text" formControlName = "eventName"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Start date <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input placeholder="Start date" required type="date" formControlName = "startDate"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Start time <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input required type="time" formControlName = "startTime"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">End date
+        </ion-label>
+        <ion-input type="date" formControlName = "endDate"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">End time
+        </ion-label>
+        <ion-input type="time" formControlName = "endTime"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Image
+        </ion-label>
+        <ion-input type="text" placeholder="Image url" formControlName = "endTime"></ion-input>
+        
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Event location</ion-label>
+        <ion-textarea placeholder="location"></ion-textarea>
+  
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Participants</ion-label>
+        <ion-textarea placeholder="location"></ion-textarea>
+        <ion-list *ngIf="dataReturned">
+          <ion-item *ngFor="let p of dataReturned">
+            <p>{{p.name}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-item>
+
+      
+  
+      <ion-item>
+        <ion-label position="stacked">Event description</ion-label>
+        <ion-textarea placeholder="describe your event..."></ion-textarea>
+      </ion-item>
+      <ion-button margin (click)="presentModal()">Add participants</ion-button>
+    </ion-list>
+  
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="ion-no-margin"
+      (click)="this.postNewEvent()"
+      >Create event</ion-button>
+    </div>
+  
+    </form>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+        My Event App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- <div>{{authUser$ | async | json}}</div>
+    <div>{{eventArray | json}}</div> -->
+      <ion-list>
+        <ion-item *ngFor= "let event of eventArray" tappable (click)="onClick(event)">
+          <ion-label> {{event.eventName}}</ion-label>
+          <button ion-button appStopPropagation item-end icon-start slot="end" (click)="onDeleteEvent(event.eventId)">Delete event</button >
+            
+        </ion-item>
+      </ion-list>
+      <ion-button routerLink="../create-event">Create Event</ion-button>
+</ion-content>
